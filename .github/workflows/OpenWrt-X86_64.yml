@@ -1,0 +1,28 @@
+name: OpenWrt-X86_64
+
+on:
+  schedule:
+    - cron: 0 20 * * *
+  workflow_dispatch:
+    inputs:
+      TEST:
+        description: '输出文件配置'
+        default: false
+        required: false
+        type: boolean
+
+permissions: write-all
+
+jobs:
+  wrt_config:
+    name: Immortalwrt-X86_64
+    uses: ./.github/workflows/OpenWrt-Core.yml
+    with:
+      WRT_TARGET: X86_64
+      WRT_DEVICE: "Generic"
+      WRT_THEME: argon
+      WRT_NAME: Aoki
+      WRT_IP: 10.100.100.1
+      WRT_URL: https://github.com/Immortalwrt/Immortalwrt
+      WRT_BRANCH: master
+      WRT_TEST: ${{inputs.TEST || 'false'}}
