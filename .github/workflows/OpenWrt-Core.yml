@@ -156,7 +156,7 @@ jobs:
       - name: Package Firmware
         run: |
           cd ./openwrt/ && mkdir ./upload/
-          cp -f ./.config ./upload/Config_"$WRT_SOURCE"_"$WRT_TARGET"_"$WRT_DATE".txt
+          cp -f ./.config ./upload/Config-"$WRT_SOURCE"-"$WRT_TARGET"-"$WRT_DATE".txt
           if [[ $WRT_TEST != 'true' ]]; then
             find ./bin/targets/ -iregex ".*\(buildinfo\|json\|manifest\|sha256sums\|packages\)$" -exec rm -rf {} +
             for DEVICE in $WRT_DEVICE ; do
