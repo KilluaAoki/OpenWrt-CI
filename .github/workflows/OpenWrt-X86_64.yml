@@ -21,8 +21,8 @@ jobs:
       WRT_TARGET: X86_64
       WRT_DEVICE: "Generic"
       WRT_THEME: argon
-      WRT_NAME: Aoki
+      WRT_NAME: AokiWrt
       WRT_IP: 10.100.100.1
-      WRT_URL: https://github.com/Immortalwrt/Immortalwrt
+      WRT_URL: https://github.com/Immortalwrt/Immortalwrt.git
       WRT_BRANCH: master
-      WRT_TEST: ${{inputs.TEST || 'false'}}
+      WRT_TEST: ${{inputs.TEST}}
