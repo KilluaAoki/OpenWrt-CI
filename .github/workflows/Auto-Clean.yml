@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       NUMBER:
-        default: '5'
+        default: "2"
         required: false
         type: string
 
@@ -22,7 +22,7 @@ jobs:
       - name: Delete Old Releases
         uses: dev-drprasad/delete-older-releases@master
         with:
-          keep_latest: ${{inputs.NUMBER || '5'}}
+          keep_latest: ${{inputs.NUMBER || '2'}}
           delete_tags: true
 
       - name: Delete Old Workflows

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       TEST:
-        description: '输出文件配置'
+        description: "输出文件配置"
         default: false
         required: false
         type: boolean
