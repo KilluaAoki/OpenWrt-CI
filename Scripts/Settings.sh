@@ -20,3 +20,7 @@ sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ $WRT_REPO-$WRT_DATE')/g" $(find .
 # 配置文件修改
 echo "CONFIG_PACKAGE_luci-theme-$WRT_THEME=y" >> ./.config
 echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
+
+# 扩展主题
+echo "CONFIG_PACKAGE_luci-theme-alpha=y" >> ./.config
+echo "CONFIG_PACKAGE_luci-app-alpha-config=y" >> ./.config

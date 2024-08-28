@@ -23,7 +23,7 @@ if [ -d *"homeproxy"* ]; then
 	cd $PKG_PATCH && echo "HomeProxy presets completed!"
 fi
 
-# 预置 OpenClash 内核
+# 预置 OpenClash 内核和数据
 if [ -d *"openclash"* ]; then
 	CORE_VER="https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version"
 	CORE_TYPE=$(echo $WRT_TARGET | grep -Eiq "64|86" && echo "amd64" || echo "arm64")
@@ -33,7 +33,17 @@ if [ -d *"openclash"* ]; then
 	CORE_MATE="https://github.com/vernesong/OpenClash/raw/core/dev/meta/clash-linux-$CORE_TYPE.tar.gz"
 	CORE_TUN="https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linux-$CORE_TYPE-$CORE_TUN_VER.gz"
 
-	mkdir ./luci-app-openclash/root/etc/openclash/core/ && cd ./luci-app-openclash/root/etc/openclash/core/
+	GEO_MMDB="https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
+	GEO_SITE="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+	GEO_IP="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
+
+	cd ./luci-app-openclash/root/etc/openclash/
+
+	curl -sL -o Country.mmdb $GEO_MMDB
+	curl -sL -o GeoSite.dat $GEO_SITE
+	curl -sL -o GeoIP.dat $GEO_IP
+
+	mkdir ./core/ && cd ./core/
 
 	curl -sL -o meta.tar.gz $CORE_MATE && tar -zxf meta.tar.gz && mv -f clash clash_meta
 	curl -sL -o tun.gz $CORE_TUN && gzip -d tun.gz && mv -f tun clash_tun

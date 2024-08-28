@@ -22,8 +22,13 @@ UPDATE_PACKAGE() {
 
 UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "master"
 UPDATE_PACKAGE "argon-config" "jerrykuku/luci-app-argon-config" "master"
+UPDATE_PACKAGE "alpha" "derisamedia/luci-theme-alpha" "master"
+UPDATE_PACKAGE "alpha-config" "animegasan/luci-app-alpha-config" "master"
 UPDATE_PACKAGE "homeproxy" "immortalwrt/homeproxy" "master"
 UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
+UPDATE_PACKAGE "mihomo" "morytyann/OpenWrt-mihomo" "main" "pkg"
+UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
+UPDATE_PACKAGE "luci-app-wolplus" "animegasan/luci-app-wolplus" "main"
 
 # 更新软件包版本
 UPDATE_VERSION() {
@@ -61,3 +66,8 @@ UPDATE_VERSION() {
 }
 
 UPDATE_VERSION "sing-box" "true"
+
+# 更改主题默认壁纸
+cp $GITHUB_WORKSPACE/Background/background.jpg ./luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+cp $GITHUB_WORKSPACE/Background/background.png ./luci-theme-alpha/luasrc/background/login.png
+cp $GITHUB_WORKSPACE/Background/background.png ./luci-theme-alpha/luasrc/background/dashboard.png
